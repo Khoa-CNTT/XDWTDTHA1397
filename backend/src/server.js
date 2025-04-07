@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const sequelize = require('./config/database');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
+const jobCategoryRoutes = require('./routes/jobCategoryRoutes');
 
 // Load env vars
 dotenv.config();
@@ -18,6 +19,7 @@ app.use(express.json());
 // Routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
+app.use('/api/v1/job-categories', jobCategoryRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
