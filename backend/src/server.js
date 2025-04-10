@@ -5,6 +5,11 @@ const sequelize = require('./config/database');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const jobCategoryRoutes = require('./routes/jobCategoryRoutes');
+const jobRoutes = require('./routes/jobRoutes');
+const applicationRoutes = require('./routes/applicationRoutes');
+const blogRoutes = require('./routes/blogRoutes');
+const commentRoutes = require('./routes/commentRoutes');
+const cvRoutes = require('./routes/cvRoutes');
 
 // Load env vars
 dotenv.config();
@@ -20,6 +25,11 @@ app.use(express.json());
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/job-categories', jobCategoryRoutes);
+app.use('/api/v1/jobs', jobRoutes);
+app.use('/api/v1/applications', applicationRoutes);
+app.use('/api/v1/blogs', blogRoutes);
+app.use('/api/v1/comments', commentRoutes);
+app.use('/api/v1/cvs', cvRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
