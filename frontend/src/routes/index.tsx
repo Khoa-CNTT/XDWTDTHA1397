@@ -17,6 +17,7 @@ import ManageSkillsPage from "@/pages/admin/ManageSkillsPage";
 import ManageCategoriesPage from "@/pages/admin/ManageCategoriesPage";
 import ManageJobsPage from "@/pages/admin/ManageJobsPage";
 import ManageResumesPage from "@/pages/admin/ManageResumesPage";
+import ManageBlogsPage from "@/pages/admin/ManageBlogsPage";
 import AllCompaniesPage from "@/pages/AllCompaniesPage";
 import CompanyDetailsPage from "@/pages/CompanyDetailsPage";
 import AllJobsPage from "@/pages/AllJobsPage";
@@ -28,6 +29,8 @@ import JobsBySkillPage from '@/pages/JobsBySkillPage';
 import JobsByCategoryPage from '@/pages/JobsByCategoryPage';
 import JobSearchResultsPage from '@/pages/JobSearchResultsPage';
 import AppliedJobsPage from "@/pages/AppliedJobsPage";
+import BlogListPage from '@/pages/BlogListPage';
+import BlogDetailPage from '@/pages/BlogDetailPage';
 
 const Root = () => (
   <AuthProvider>
@@ -59,6 +62,14 @@ export const router = createBrowserRouter([
           { path: "dashboard", element: <UserDashboardPage /> },
           { path: "profile", element: <UserProfilePage /> },
           { path: "resumes/attached", element: <AttachedResumesPage /> },
+          {
+            path: "blog",
+            element: <BlogListPage />,
+          },
+          {
+            path: "blog/:id",
+            element: <BlogDetailPage />,
+          },
         ]
       },
 
@@ -67,37 +78,38 @@ export const router = createBrowserRouter([
         element: <ProtectedRoute allowedRoles={['ADMIN']} />,
         children: [
           {
-              element: <AdminLayout />,
-              children: [
-                  { index: true, element: <AdminPage /> },
-                  { path: "profile", element: <ProfilePage /> }, 
-                  { path: "companies", element: <ManageCompaniesPage /> },
-                  { path: "users", element: <ManageUsersPage /> },
-                  { path: "roles", element: <ManageRolesPage /> },
-                  { path: "skills", element: <ManageSkillsPage /> },
-                  { path: "categories", element: <ManageCategoriesPage /> },
-                  { path: "jobs", element: <ManageJobsPage /> }
-              ]
+            element: <AdminLayout />,
+            children: [
+              { index: true, element: <AdminPage /> },
+              { path: "profile", element: <ProfilePage /> },
+              { path: "companies", element: <ManageCompaniesPage /> },
+              { path: "users", element: <ManageUsersPage /> },
+              { path: "roles", element: <ManageRolesPage /> },
+              { path: "skills", element: <ManageSkillsPage /> },
+              { path: "categories", element: <ManageCategoriesPage /> },
+              { path: "jobs", element: <ManageJobsPage /> },
+              { path: "blogs", element: <ManageBlogsPage /> },
+            ]
           }
         ]
       },
-      
+
       {
-         path: "hr",
-         element: <ProtectedRoute allowedRoles={['HR']} />,
-         children: [
-           {
-              element: <AdminLayout />,
-              children: [
-                  { index: true, element: <Navigate to="/hr/jobs" replace /> }, 
-                  { path: "profile", element: <ProfilePage /> }, 
-                  { path: "companies", element: <ManageCompaniesPage /> },
-                  { path: "jobs", element: <ManageJobsPage /> },
-                  { path: "resumes", element: <ManageResumesPage /> }
-              ]
-           }
-         ]
-      }
+        path: "hr",
+        element: <ProtectedRoute allowedRoles={['HR']} />,
+        children: [
+          {
+            element: <AdminLayout />,
+            children: [
+              { index: true, element: <Navigate to="/hr/jobs" replace /> },
+              { path: "profile", element: <ProfilePage /> },
+              { path: "companies", element: <ManageCompaniesPage /> },
+              { path: "jobs", element: <ManageJobsPage /> },
+              { path: "resumes", element: <ManageResumesPage /> }
+            ]
+          }
+        ]
+      },
     ],
   },
 ]);

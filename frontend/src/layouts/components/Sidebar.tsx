@@ -9,7 +9,8 @@ import {
   DocumentTextIcon,
   TagIcon,
   AcademicCapIcon,
-  RectangleGroupIcon
+  RectangleGroupIcon,
+  NewspaperIcon
 } from '@heroicons/react/24/outline';
 
 const Sidebar: React.FC = () => {
@@ -44,6 +45,12 @@ const Sidebar: React.FC = () => {
                 <NavLink to={`${basePath}/users`} className={navLinkClasses}>
                   <UsersIcon className="h-5 w-5 mr-3 flex-shrink-0 text-gray-400 group-hover:text-white" />
                   <span className="flex-1 whitespace-nowrap">Quản lý Người dùng</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to={`${basePath}/blogs`} className={navLinkClasses}>
+                  <NewspaperIcon className="h-5 w-5 mr-3 flex-shrink-0 text-gray-400 group-hover:text-white" />
+                  <span className="flex-1 whitespace-nowrap">Quản lý Bài viết</span>
                 </NavLink>
               </li>
                <li>
